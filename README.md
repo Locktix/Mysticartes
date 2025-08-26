@@ -1,4 +1,4 @@
-# MystiCartes - Site de Réseaux Sociaux
+# Aywerly - Site de Réseaux Sociaux
 
 Un site web mobile élégant et moderne pour présenter vos réseaux sociaux, conçu pour être accessible via QR code sur vos distributeurs de cartes Pokémon.
 
@@ -8,15 +8,17 @@ Un site web mobile élégant et moderne pour présenter vos réseaux sociaux, co
 - **Responsive** optimisé pour mobile
 - **Animations fluides** et interactions
 - **Image de fond personnalisée** (background.png)
-- **Logo MystiCartes** avec dégradé coloré
+- **Logo Aywerly** avec dégradé coloré
 - **Boutons de réseaux sociaux** avec effets hover
+- **Bouton de parrainage** avec copie automatique du code
 - **Facilement extensible** pour ajouter de nouveaux réseaux
 
 ## 📱 Réseaux Sociaux Inclus
 
-- **Instagram** - icône et couleurs officielles
-- **Voggt** - icône de shopping
-- **Vinted** - icône de vêtements
+- **Instagram** - @aywerly007 avec icône et couleurs officielles
+- **Voggt** - Profil Aywerly
+- **Code de parrainage** - Bouton cliquable pour copier AYWERLY291281
+- **Vinted** - Profil membre 199176967
 - **Section "Plus à venir"** pour futurs ajouts
 
 ## 🎨 Personnalisation
@@ -26,7 +28,7 @@ Un site web mobile élégant et moderne pour présenter vos réseaux sociaux, co
 Utilisez la fonction JavaScript `addSocialNetwork()` :
 
 ```javascript
-addSocialNetwork('TikTok', 'https://tiktok.com/@mysticartes', 'fab fa-tiktok', '#ff0050');
+addSocialNetwork('TikTok', 'https://tiktok.com/@aywerly007', 'fab fa-tiktok', '#ff0050');
 ```
 
 ### Modifier les couleurs
@@ -97,4 +99,4 @@ Le site est conçu pour être facilement extensible :
 
 ---
 
-**Créé pour MystiCartes** - Vos cartes Pokémon préférées 🎴✨
+**Créé pour Aywerly** - Vos cartes Pokémon préférées 🎴✨

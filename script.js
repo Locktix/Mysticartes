@@ -15,37 +15,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Démarrer l'animation après un court délai
     setTimeout(animateElements, 300);
 
-    // Ajouter des effets de hover avancés
+    // Effets tactiles pour mobile (pas de hover)
     const socialButtons = document.querySelectorAll('.social-button');
     
     socialButtons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px) scale(1.02)';
+        // Effet de clic tactile simple
+        button.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
         });
         
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+        button.addEventListener('touchend', function() {
+            this.style.transform = 'scale(1)';
         });
         
-        // Effet de clic
+        // Fallback pour clic souris
         button.addEventListener('mousedown', function() {
-            this.style.transform = 'translateY(-2px) scale(0.98)';
+            this.style.transform = 'scale(0.98)';
         });
         
         button.addEventListener('mouseup', function() {
-            this.style.transform = 'translateY(-5px) scale(1.02)';
+            this.style.transform = 'scale(1)';
         });
-    });
-
-    // Animation du logo au survol
-    const logo = document.querySelector('.logo');
-    logo.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.05)';
-        this.style.transition = 'transform 0.3s ease';
-    });
-    
-    logo.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
     });
 
     // Effet de parallaxe léger sur le scroll
@@ -121,4 +111,76 @@ function addSocialNetwork(name, url, icon, color) {
 }
 
 // Exemple d'utilisation pour ajouter un nouveau réseau :
-// addSocialNetwork('TikTok', 'https://tiktok.com/@mysticartes', 'fab fa-tiktok', '#ff0050');
+// addSocialNetwork('TikTok', 'https://tiktok.com/@aywerly007', 'fab fa-tiktok', '#ff0050');
+
+// Fonction pour copier le code de parrainage dans le presse-papiers
+function copyReferralCode() {
+    const referralCode = 'AYWERLY291281';
+    
+    // Copier dans le presse-papiers
+    if (navigator.clipboard && window.isSecureContext) {
+        // Méthode moderne pour HTTPS
+        navigator.clipboard.writeText(referralCode).then(() => {
+            showCopySuccess();
+        }).catch(() => {
+            fallbackCopyTextToClipboard(referralCode);
+        });
+    } else {
+        // Méthode de fallback pour HTTP
+        fallbackCopyTextToClipboard(referralCode);
+    }
+}
+
+// Méthode de fallback pour copier le texte
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopySuccess();
+    } catch (err) {
+        console.error('Erreur lors de la copie:', err);
+        showCopyError();
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Afficher le succès de la copie
+function showCopySuccess() {
+    const button = document.querySelector('.social-button.voggt[onclick="copyReferralCode()"]');
+    if (!button) return;
+    
+    const originalText = button.querySelector('span').textContent;
+    
+    // Changer l'apparence du bouton
+    button.classList.add('copied');
+    button.querySelector('span').textContent = 'Code copié ! ✓';
+    
+    // Remettre l'état original après 2 secondes
+    setTimeout(() => {
+        button.classList.remove('copied');
+        button.querySelector('span').textContent = originalText;
+    }, 2000);
+}
+
+// Afficher l'erreur de copie
+function showCopyError() {
+    const button = document.querySelector('.social-button.voggt[onclick="copyReferralCode()"]');
+    if (!button) return;
+    
+    const originalText = button.querySelector('span').textContent;
+    
+    button.querySelector('span').textContent = 'Erreur de copie !';
+    
+    setTimeout(() => {
+        button.querySelector('span').textContent = originalText;
+    }, 2000);
+}
